@@ -1,9 +1,9 @@
-import type { GetServerSideProps, NextPage } from "next";
+import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
-const Home: NextPage = ({ response }: any) => {
+const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,7 +13,6 @@ const Home: NextPage = ({ response }: any) => {
       </Head>
 
       <main className={styles.main}>
-        <div>{JSON.stringify(response)}</div>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
@@ -70,17 +69,17 @@ const Home: NextPage = ({ response }: any) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const datas = await fetch(
-    `http://test.gateway.api:7001/pages/housingloan/home`
-  );
-  const response = await datas.json();
+// export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+//   const datas = await fetch(
+//     `http://test.gateway.api:7001/pages/housingloan/home`
+//   );
+//   const response = await datas.json();
 
-  return {
-    props: {
-      response,
-    },
-  };
-};
+//   return {
+//     props: {
+//       response,
+//     },
+//   };
+// };
 
 export default Home;
